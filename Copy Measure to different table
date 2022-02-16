@@ -1,0 +1,10 @@
+//Copy measures to another static hardcoded table, whilst find-and-replace part of their names and expressions.
+
+foreach(var c in Selected.Measures)
+{
+    var newMeasure = Model.Tables["Invoices"].AddMeasure(
+        "Invoice " + c.Name,                                                    // Name
+        c.Expression.Replace("Order","Invoice").Replace("order","invoice"),     // DAX expression
+        c.DisplayFolder                                                         // Display Folder
+    );
+}
